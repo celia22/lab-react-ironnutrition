@@ -8,13 +8,12 @@ class SearchBar extends Component{
     }
   }
 
-  handleChange = (x) => this.setState({ query: x.target.value });
-  
+  handleChange = (x) => this.setState({ query: x.target.value });  
 
   render(){
     return(
       <div>
-          <input type="text" name="value" value={this.state.value} onChange={this.handleChange}/>
+          <input type="text" name="value" value={this.state.query} onChange={this.handleChange}/>
      </div>
     )
   }

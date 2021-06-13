@@ -21,26 +21,28 @@ class App extends Component {
     this.setState({
       foods: oldFood,
     });
-    console.log(this.state);
   };
 
   searchFoodQuery = (value) => {
-    const searchFoodArray = [...this.state.foods].filter((item) =>
+    const searchFood = [...this.state.foods].filter((item) =>
       item.includes(value)
     );
     this.setState({
-      searchFoodArray: searchFoodArray,
+      searchFoodArray: searchFood,
     });
-    console.log(searchFoodArray);
   };
 
   render() {
+    const { searchFoodArray } = this.state;
+    console.log('foodarray', searchFoodArray);
     return (
       <div className="food_list_container">
         <h1>IronNutrition</h1>
         <FormAddFood create={this.createFood} />
         <SearchBar search={this.searchFoodQuery} />
-        <FoodBox />
+        {foods.map((food, index) => {
+          return <FoodBox key={index} food={food} />;
+        })}
       </div>
     );
   }
