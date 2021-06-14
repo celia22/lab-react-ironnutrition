@@ -8,7 +8,10 @@ class SearchBar extends Component{
     }
   }
 
-  handleChange = (x) => this.setState({ query: x.target.value });  
+  handleChange = (x) => {
+    this.setState({ query: x.target.value });  
+    this.props.search(x.target.value)
+  }
 
   render(){
     return(

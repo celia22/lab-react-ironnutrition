@@ -11,13 +11,13 @@ class App extends Component {
     super(props);
     this.state = {
       foods,
-      searchFoodArray: [],
+      searchFoodArray: foods,
     };
   }
 
-  createFood = (name, calories, image) => {
+  createFood = (newfood) => {
     const oldFood = [...this.state.foods];
-    oldFood.push({ name, calories, image, quantity: 0 });
+    oldFood.push(newfood);
     this.setState({
       foods: oldFood,
     });
@@ -25,9 +25,9 @@ class App extends Component {
 
   searchFoodQuery = (value) => {
     const searchFood = [...this.state.foods].filter((item) =>
-      item.includes(value)
+      item.name.toLowerCase().includes(value)
     );
-    this.setState({
+    return this.setState({
       searchFoodArray: searchFood,
     });
   };
@@ -40,7 +40,7 @@ class App extends Component {
         <h1>IronNutrition</h1>
         <FormAddFood create={this.createFood} />
         <SearchBar search={this.searchFoodQuery} />
-        {foods.map((food, index) => {
+        {searchFoodArray.map((food, index) => {
           return <FoodBox key={index} food={food} />;
         })}
       </div>
