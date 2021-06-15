@@ -5,13 +5,22 @@ class FoodBox extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      food: this.props.food
+      food: this.props.food,
+      quantity: 1,
     };
   }
 
-  render(){
+  addTodayDish = (x) => {    
+    this.props.addToday(x.target.value)
+  } 
+ 
+  handleQuantity = (x) => {
+    this.setState({quantity: x.target.value})
+  }
 
-    const { food } = this.props
+  render(){ 
+
+     const { food } = this.props
     return(
      
       <div className="box">        
@@ -33,10 +42,10 @@ class FoodBox extends Component{
           <div className="media-right">
             <div className="field has-addons">
               <div className="control">
-                <input className="input" type="number" value= {this.state.quantity} />
+                <input className="input" type="number" value= {this.state.quantity} onChange={this.handleQuantity}/>
               </div>
               <div className="control">
-                <button className="button is-info">
+                <button className="button is-info" onClick={this.addTodayDish}>
                   +
                 </button>
               </div>
@@ -49,3 +58,5 @@ class FoodBox extends Component{
 }
 
 export default FoodBox;
+
+

@@ -5,9 +5,10 @@ class FormAddFood extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      newName: "",
-      newCalories: " ",
-      newImage: " ",
+      name: "",
+      calories: 0,
+      image: "",
+      quantity: 0,
       addNewFood: false,
     };
   }
@@ -18,15 +19,17 @@ class FormAddFood extends Component{
     });
   };
 
-  handleName = (x) => this.setState({ newName: x.target.value });
-  handleCalories = (x) => this.setState({ newCalories: x.target.value });
-  handleImage = (x) => this.setState({ newImage: x.target.value });
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
 
-  createFood = (x) => {
-    const { newName, newCalories, newImage } = this.state;
-    this.props.create(x, newName, newCalories, newImage);
-    this.setState({ newName: '', newCalories: '', newImage: '' });
-    
+  createFoodButton = (event) => {
+    event.preventDefault();
+    const { name, calories, image } = this.state;    
+    this.setState({ name: name, calories: calories, image: image, addNewFood: false});   
+    this.props.create( { name, calories, image });
   };
  
 
@@ -38,15 +41,15 @@ class FormAddFood extends Component{
         <div>
         <form style={{display: this.state.addNewFood ? 'block' : 'none' }}>
           <label>Name:</label>
-          <input type="text" name="name" value={this.state.newName} onChange={this.handleName} />
+          <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
  
           <label>Calories:</label>
-          <input type="number" name="Calories" value={this.state.newCalories}  onChange={this.handleCalories} />
+          <input type="number" name="calories" value={this.state.calories} onChange={this.handleChange} />
           
           <label>Image:</label>
-          <input type="text" name="image" value={this.state.newImage}  onChange={this.handleImage} />
+          <input type="text" name="image" value={this.state.image} onChange={this.handleChange} />
           
-          <button onClick={this.createFood}>Submit</button>
+          <button onClick={this.createFoodButton}>Submit</button>
         </form>
       </div>
       </div>
