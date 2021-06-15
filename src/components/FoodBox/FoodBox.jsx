@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
 import 'bulma/css/bulma.css';
+import "./FoodBox.css"
 
 class FoodBox extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      food: this.props.food,
+      food: this.props.item,
       quantity: 1,
     };
   }
 
-  addTodayDish = (x) => {    
-    this.props.addToday(x.target.value)
-  } 
- 
+  
   handleQuantity = (x) => {
-    this.setState({quantity: x.target.value})
+    this.setState({quantity: x.target.value})   
   }
 
-  render(){ 
+  addTodayDish = () => {  
+    this.props.addToday({food: this.state.food, quantity: this.state.quantity})    
+  } 
 
-     const { food } = this.props
+  render(){ 
+     const { item } = this.props
+
     return(
      
       <div className="box">        
@@ -28,14 +30,14 @@ class FoodBox extends Component{
           <article className="media">
           <div className="media-left">
             <figure className="image is-64x64">
-              <img src={food.image} alt="food"/>
+              <img src={item.image} alt="food"/>
             </figure>
           </div>
           <div className="media-content">
             <div className="content">
               <p>
-                <strong>{food.name}</strong> <br />
-                <small>{food.calories}</small>
+                <strong>{item.name}</strong> <br />
+                <small>{item.calories}</small>
               </p>
             </div>
           </div>

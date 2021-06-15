@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import foods from './foods.json';
-import FoodBox from './components/FoodBox';
-import FormAddFood from './components/FormAddFood';
-import SearchBar from './components/SearchBar';
-import TodaysFood from './components/TodaysFood';
+import FoodBox from './components/FoodBox/FoodBox';
+import FormAddFood from './components/FormAddFood/FormAddFood';
+import SearchBar from './components/Searchbar/SearchBar';
+import TodaysFood from './components/TodaysFood/TodaysFood';
 import 'bulma/css/bulma.css';
 import './App.css';
 
@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       JSONFoods: foods,
       searchFoodArray: foods,
-      todaysFood: foods,
+      todaysFood: [],
     };
   }
 
@@ -34,14 +34,13 @@ class App extends Component {
     });
   };
 
-  addTodayFood = (items) => {
-    const today = [...this.state.todaysFood];
-    today.push(items);
+  addTodayFood = (item) => {
+    const today = this.state.todaysFood;
+    today.push(item);
     this.setState({
       todaysFood: today,
     });
-    //console.log(this.todaysFood);
-    console.log('hago click en el boton MAS', items.quantity);
+    console.log('foodtoday', this.state.todaysFood);
   };
 
   render() {
@@ -51,10 +50,10 @@ class App extends Component {
         <h1>IronNutrition</h1>
         <FormAddFood create={this.createFood} />
         <SearchBar search={this.searchFoodQuery} />
-        <TodaysFood />
-        {searchFoodArray.map((food, index) => {
+        <TodaysFood addToList={this.state.todaysFood} />
+        {searchFoodArray.map((item, index) => {
           return (
-            <FoodBox addToday={this.addTodayFood} key={index} food={food} />
+            <FoodBox addToday={this.addTodayFood} key={index} item={item} />
           );
         })}
       </div>

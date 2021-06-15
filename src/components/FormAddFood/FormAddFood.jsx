@@ -37,7 +37,7 @@ class FormAddFood extends Component{
 
     return(
       <div>
-        <button onClick={this.clickHandler}>Add New Food!!</button>
+        <button className="button is-primary" onClick={this.clickHandler}>Add New Food!!</button>
         <div>
         <form style={{display: this.state.addNewFood ? 'block' : 'none' }}>
           <label>Name:</label>
@@ -49,7 +49,7 @@ class FormAddFood extends Component{
           <label>Image:</label>
           <input type="text" name="image" value={this.state.image} onChange={this.handleChange} />
           
-          <button onClick={this.createFoodButton}>Submit</button>
+          <button className="button is-primary" onClick={this.createFoodButton}>Submit</button>
         </form>
       </div>
       </div>
