@@ -5,7 +5,7 @@ import 'bulma/css/bulma.css';
 
 const TodaysFood = (props) =>  {
   
-  const todayFoodArray= props.addToList;
+let todayFoodArray= props.addToList;
   
   let result = 0;
   const multiplyCalories = () => {    
@@ -14,12 +14,6 @@ const TodaysFood = (props) =>  {
     }
     return result
   };
-  
-  // handleDuplicates = (dish) => {
-  //   const { todayFoodArray } = this.state;
-  //   let sameItem = todayFoodArray.findIndex(item => item.food.name === dish.food.name);
-  //   sameItem !== -1 ? todayFoodArray[sameItem].quantity += 1 : this.setState({todayFoodArray})
-  // }
 
 
  multiplyCalories()
@@ -34,9 +28,8 @@ const TodaysFood = (props) =>  {
         return (
           <div key={index}>
           <ul>
-            <li > <strong>{item.quantity} {item.food.name}</strong> - {item.quantity * item.food.calories}cal</li>
-           </ul>  
-               
+            <li> <strong>{item.quantity} {item.food.name}</strong> - {item.quantity * item.food.calories}cal</li>
+           </ul>                 
           </div> 
         )
       })}

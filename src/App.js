@@ -58,6 +58,7 @@ class App extends Component {
         <TodaysFood
           addToList={this.state.todaysFood}
           multCal={this.state.totalCalories}
+          delete={this.deleteDish}
         />
         {searchFoodArray.map((item, index) => {
           return (
