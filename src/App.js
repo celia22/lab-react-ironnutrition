@@ -36,18 +36,17 @@ class App extends Component {
   };
 
   addTodayFood = (item) => {
-    const today = this.state.todaysFood;
-    today.push(item);
+    const todayArr = this.state.todaysFood;
+    todayArr.push(item);
+    const today = Array.from(new Set(todayArr.map((x) => x.food.name))).map(
+      (name) => {
+        return todayArr.find((x) => x.food.name === name);
+      }
+    );
     this.setState({
       todaysFood: today,
     });
   };
-
-  //  handleDuplicates = (dish) => {
-  //   const { todayFoodArray } = this.state;
-  //   let sameItem = todayFoodArray.findIndex(item => item.food.name === dish.food.name);
-  //   sameItem !== -1 ? todayFoodArray[sameItem].quantity += 1 : this.setState({todayFoodArray})
-  // }
 
   render() {
     const { searchFoodArray } = this.state;
