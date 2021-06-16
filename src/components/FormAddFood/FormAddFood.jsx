@@ -37,19 +37,19 @@ class FormAddFood extends Component{
 
     return(
       <div>
-        <button className="button is-primary" onClick={this.clickHandler}>Add New Food!!</button>
-        <div>
+        <button className="button is-primary m-2" onClick={this.clickHandler}>Add New Food!!</button>
+        <div className="field is-horizontal "> 
         <form style={{display: this.state.addNewFood ? 'block' : 'none' }}>
-          <label>Name:</label>
+          <label><strong>Name:</strong></label>
           <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
  
-          <label>Calories:</label>
+          <label><strong>Calories:</strong></label>
           <input type="number" name="calories" value={this.state.calories} onChange={this.handleChange} />
           
-          <label>Image:</label>
+          <label><strong>Image:</strong></label>
           <input type="text" name="image" value={this.state.image} onChange={this.handleChange} />
           
-          <button className="button is-primary" onClick={this.createFoodButton}>Submit</button>
+          <button className="button is-primary is-small ml-3" onClick={this.createFoodButton}>Submit</button>
         </form>
       </div>
       </div>

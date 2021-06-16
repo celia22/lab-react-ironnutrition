@@ -16,7 +16,7 @@ class SearchBar extends Component{
   render(){
     return(
       <div>
-          <input type="text" name="value" value={this.state.query} onChange={this.handleChange}/>
+          <input className="input is-medium m-4" placeholder="Search food..." type="text" name="value" value={this.state.query} onChange={this.handleChange}/>
      </div>
     )
   }

@@ -14,6 +14,7 @@ class App extends Component {
       JSONFoods: foods,
       searchFoodArray: foods,
       todaysFood: [],
+      totalCalories: 0,
     };
   }
 
@@ -40,17 +41,25 @@ class App extends Component {
     this.setState({
       todaysFood: today,
     });
-    console.log('foodtoday', this.state.todaysFood);
   };
+
+  //  handleDuplicates = (dish) => {
+  //   const { todayFoodArray } = this.state;
+  //   let sameItem = todayFoodArray.findIndex(item => item.food.name === dish.food.name);
+  //   sameItem !== -1 ? todayFoodArray[sameItem].quantity += 1 : this.setState({todayFoodArray})
+  // }
 
   render() {
     const { searchFoodArray } = this.state;
     return (
       <div className="food_list_container">
-        <h1>IronNutrition</h1>
+        <h1 className="title is-1">IronNutrition</h1>
         <FormAddFood create={this.createFood} />
         <SearchBar search={this.searchFoodQuery} />
-        <TodaysFood addToList={this.state.todaysFood} />
+        <TodaysFood
+          addToList={this.state.todaysFood}
+          multCal={this.state.totalCalories}
+        />
         {searchFoodArray.map((item, index) => {
           return (
             <FoodBox addToday={this.addTodayFood} key={index} item={item} />

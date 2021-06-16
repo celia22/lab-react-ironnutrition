@@ -24,9 +24,8 @@ class FoodBox extends Component{
      const { item } = this.props
 
     return(
-     
-      <div className="box">        
-          
+ 
+      <div className="box">             
           <article className="media">
           <div className="media-left">
             <figure className="image is-64x64">
@@ -55,6 +54,7 @@ class FoodBox extends Component{
           </div>
         </article>        
   </div>
+
     )
   }
 }
